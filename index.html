@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eine Botschaft aus deinem Glas 🥕</title>
+  <style>
+    :root {
+      --bg: #fff8ee;
+      --card: #ffffff;
+      --text: #2d2926;
+      --muted: #756d65;
+      --accent: #e8872f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px;
+    }
+    .card {
+      width: min(560px, 100%);
+      background: var(--card);
+      border-radius: 28px;
+      padding: 34px 26px;
+      text-align: center;
+      box-shadow: 0 14px 40px rgba(64, 45, 25, .09);
+    }
+    .jar {
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .emoji { font-size: 42px; }
+    h1 {
+      font-size: clamp(22px, 5vw, 32px);
+      margin: 10px 0 26px;
+    }
+    #message {
+      min-height: 150px;
+      display: grid;
+      place-items: center;
+      font-size: clamp(24px, 6vw, 38px);
+      line-height: 1.25;
+      font-weight: 700;
+      padding: 14px 4px;
+    }
+    button, a.button {
+      display: inline-block;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 20px;
+      margin: 8px 4px 0;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    button {
+      background: var(--accent);
+      color: white;
+    }
+    a.button {
+      background: #f2eee9;
+      color: var(--text);
+    }
+    .footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="jar" id="jar">Dein Glas</div>
+    <div class="emoji">🥕</div>
+    <h1>Eine kleine Botschaft aus deinem Glas</h1>
+
+    <div id="message" aria-live="polite"></div>
+
+    <button type="button" onclick="newMessage()">Noch eine Botschaft ✨</button>
+
+    <!-- Optional:
+      Ersetze # unten später durch Instagram / Google Form / Kontaktseite.
+    -->
+    <a class="button" id="contact" href="#" onclick="return noContactYet(event)">In Kontakt bleiben</a>
+
+    <div class="footer">
+      Jedes Glas erzählt.<br>
+      Kleiner Test. Große Neugier.
+    </div>
+  </main>
+
+<script>
+  const messages = [
+        "Du machst das besser, als du denkst.",
+        "Heute darf leicht sein.",
+        "Vielleicht war genau dieses Glas für dich bestimmt.",
+        "Ein kleines Glas. Ein ziemlich guter Moment.",
+        "Du musst heute nicht alles schaffen.",
+        "Mehr Karotte. Weniger Drama.",
+        "Das Leben ist zu kurz für langweiliges Frühstück.",
+        "Falls es dir heute noch niemand gesagt hat: Schön, dass du da bist.",
+        "Manchmal beginnt etwas Gutes mit einem Löffel.",
+        "Bleib neugierig.",
+        "Du bist näher dran, als du glaubst.",
+        "Heute ist ein guter Tag für etwas Unerwartetes.",
+        "Mach mehr von dem, was dich lächeln lässt.",
+        "Vielleicht brauchst du keinen perfekten Plan. Nur den nächsten Schritt.",
+        "Sei freundlich zu dir. Auch Karotten brauchen Zeit.",
+        "Du hast gerade Marmelade gescannt. So schlecht kann dein Tag nicht sein.",
+        "Plot Twist: Heute wird besser als gedacht.",
+        "Nicht alles muss Sinn machen. Diese Karotte zum Beispiel.",
+        "Falls du auf ein Zeichen gewartet hast: 🥕",
+        "Deine heutige Aufgabe: mindestens einmal grundlos lächeln.",
+        "Du darfst stolz auf kleine Schritte sein.",
+        "Vielleicht ist heute nicht perfekt. Aber vielleicht ziemlich gut.",
+        "Ein bisschen Mut passt in jeden Tag.",
+        "Mach langsam. Gute Dinge müssen nicht hetzen.",
+        "Du bist nicht zu spät. Du bist unterwegs.",
+        "Heute zählt auch ein kleines Ja.",
+        "Ein Löffel Glück ist immer noch Glück.",
+        "Manchmal ist Pause auch Fortschritt.",
+        "Du musst nicht alles wissen, um anzufangen.",
+        "Wenn nichts hilft: Brot. Marmelade. Nochmal versuchen.",
+        "Dein zukünftiges Ich wird dir für einen kleinen mutigen Schritt danken.",
+        "Du darfst deine Meinung ändern. Sogar über Karotten.",
+        "Ein guter Tag muss nicht spektakulär sein.",
+        "Vielleicht wartet heute irgendwo ein schöner Zufall auf dich.",
+        "Du bist mehr als deine To-do-Liste.",
+        "Die Welt braucht nicht deine Perfektion. Nur ein bisschen mehr von dir.",
+        "Atme ein. Atme aus. Nimm noch einen Löffel.",
+        "Du darfst Dinge nur machen, weil sie dir Freude machen.",
+        "Große Geschichten fangen oft ziemlich klein an.",
+        "Wenn du heute nur eine Sache schaffst: Sei nett zu dir.",
+        "Das hier ist deine offizielle Erlaubnis für einen kleinen Genussmoment.",
+        "Du musst nicht produktiv sein, um einen guten Tag zu haben.",
+        "Vielleicht ist dein nächster guter Gedanke nur einen Löffel entfernt.",
+        "Heute bitte keine unnötige Selbstkritik. Die Karotte hat es verboten.",
+        "Du bist gerade Teil einer sehr kleinen Karotten-Geschichte.",
+        "Wenn du das lesen kannst, hast du schon etwas Neues ausprobiert.",
+        "Mut sieht manchmal aus wie: einfach mal probieren.",
+        "Es darf gleichzeitig chaotisch und schön sein.",
+        "Dieser Moment gehört dir. Mach was Gutes draus.",
+        "Danke, dass dieses Glas bei dir gelandet ist."
+  ];
+
+  const params = new URLSearchParams(window.location.search);
+  const glas = params.get("glas");
+
+  if (glas) {
+    const clean = glas.replace(/[^0-9A-Za-z_-]/g, "").slice(0, 12);
+    document.getElementById("jar").textContent = "Glas #" + clean;
+  }
+
+  function newMessage() {
+    const i = Math.floor(Math.random() * messages.length);
+    document.getElementById("message").textContent = messages[i];
+  }
+
+  function noContactYet(e) {
+    e.preventDefault();
+    alert("Kontakt-Link kommt hier rein 🙂");
+    return false;
+  }
+
+  newMessage();
+</script>
+</body>
+</html>
