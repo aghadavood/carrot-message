@@ -98,80 +98,103 @@
 
   </main>
 
-
 <script>
 
-const messages = [
-
-  "Du machst das besser, als du denkst.",
-  "Heute darf leicht sein.",
-  "Vielleicht war genau dieses Glas für dich bestimmt.",
-  "Ein kleines Glas. Ein ziemlich guter Moment.",
-  "Du musst heute nicht alles schaffen.",
-  "Mehr Karotte. Weniger Drama.",
-  "Das Leben ist zu kurz für langweiliges Frühstück.",
-  "Falls es dir heute noch niemand gesagt hat: Schön, dass du da bist.",
-  "Manchmal beginnt etwas Gutes mit einem Löffel.",
-  "Bleib neugierig.",
-  "Du bist näher dran, als du glaubst.",
-  "Heute ist ein guter Tag für etwas Unerwartetes.",
-  "Mach mehr von dem, was dich lächeln lässt.",
-  "Vielleicht brauchst du keinen perfekten Plan. Nur den nächsten Schritt.",
-  "Sei freundlich zu dir. Auch Karotten brauchen Zeit.",
-  "Du hast gerade Marmelade gescannt. So schlecht kann dein Tag nicht sein.",
-  "Plot Twist: Heute wird besser als gedacht.",
-  "Nicht alles muss Sinn machen. Diese Karotte zum Beispiel.",
-  "Falls du auf ein Zeichen gewartet hast: 🥕",
-  "Deine heutige Aufgabe: mindestens einmal grundlos lächeln.",
-  "Du darfst stolz auf kleine Schritte sein.",
-  "Vielleicht ist heute nicht perfekt. Aber vielleicht ziemlich gut.",
-  "Ein bisschen Mut passt in jeden Tag.",
-  "Mach langsam. Gute Dinge müssen nicht hetzen.",
-  "Du bist nicht zu spät. Du bist unterwegs.",
-  "Heute zählt auch ein kleines Ja.",
-  "Ein Löffel Glück ist immer noch Glück.",
-  "Manchmal ist Pause auch Fortschritt.",
-  "Du musst nicht alles wissen, um anzufangen.",
-  "Wenn nichts hilft: Brot. Marmelade. Nochmal versuchen.",
-  "Dein zukünftiges Ich wird dir für einen kleinen mutigen Schritt danken.",
-  "Du darfst deine Meinung ändern. Sogar über Karotten.",
-  "Ein guter Tag muss nicht spektakulär sein.",
-  "Vielleicht wartet heute irgendwo ein schöner Zufall auf dich.",
-  "Du bist mehr als deine To-do-Liste.",
-  "Die Welt braucht nicht deine Perfektion. Nur ein bisschen mehr von dir.",
-  "Atme ein. Atme aus. Nimm noch einen Löffel.",
-  "Du darfst Dinge nur machen, weil sie dir Freude machen.",
-  "Große Geschichten fangen oft ziemlich klein an.",
-  "Wenn du heute nur eine Sache schaffst: Sei nett zu dir.",
-  "Das hier ist deine offizielle Erlaubnis für einen kleinen Genussmoment.",
-  "Du musst nicht produktiv sein, um einen guten Tag zu haben.",
-  "Vielleicht ist dein nächster guter Gedanke nur einen Löffel entfernt.",
-  "Heute bitte keine unnötige Selbstkritik. Die Karotte hat es verboten.",
-  "Du bist gerade Teil einer sehr kleinen Karotten-Geschichte.",
-  "Wenn du das lesen kannst, hast du schon etwas Neues ausprobiert.",
-  "Mut sieht manchmal aus wie: einfach mal probieren.",
-  "Es darf gleichzeitig chaotisch und schön sein.",
-  "Dieser Moment gehört dir. Mach was Gutes draus.",
-  "Danke, dass dieses Glas bei dir gelandet ist."
-
-];
+const messages = {
+  "01": "Du machst das besser, als du denkst.",
+  "02": "Heute darf leicht sein.",
+  "03": "Vielleicht war genau dieses Glas für dich bestimmt.",
+  "04": "Ein kleines Glas. Ein ziemlich guter Moment.",
+  "05": "Du musst heute nicht alles schaffen.",
+  "06": "Mehr Karotte. Weniger Drama.",
+  "07": "Das Leben ist zu kurz für langweiliges Frühstück.",
+  "08": "Falls es dir heute noch niemand gesagt hat: Schön, dass du da bist.",
+  "09": "Manchmal beginnt etwas Gutes mit einem Löffel.",
+  "10": "Bleib neugierig.",
+  "11": "Du bist näher dran, als du glaubst.",
+  "12": "Heute ist ein guter Tag für etwas Unerwartetes.",
+  "13": "Mach mehr von dem, was dich lächeln lässt.",
+  "14": "Vielleicht brauchst du keinen perfekten Plan. Nur den nächsten Schritt.",
+  "15": "Sei freundlich zu dir. Auch Karotten brauchen Zeit.",
+  "16": "Du hast gerade Marmelade gescannt. So schlecht kann dein Tag nicht sein.",
+  "17": "Plot Twist: Heute wird besser als gedacht.",
+  "18": "Nicht alles muss Sinn machen. Diese Karotte zum Beispiel.",
+  "19": "Falls du auf ein Zeichen gewartet hast: 🥕",
+  "20": "Deine heutige Aufgabe: mindestens einmal grundlos lächeln.",
+  "21": "Du darfst stolz auf kleine Schritte sein.",
+  "22": "Vielleicht ist heute nicht perfekt. Aber vielleicht ziemlich gut.",
+  "23": "Ein bisschen Mut passt in jeden Tag.",
+  "24": "Mach langsam. Gute Dinge müssen nicht hetzen.",
+  "25": "Du bist nicht zu spät. Du bist unterwegs.",
+  "26": "Heute zählt auch ein kleines Ja.",
+  "27": "Ein Löffel Glück ist immer noch Glück.",
+  "28": "Manchmal ist Pause auch Fortschritt.",
+  "29": "Du musst nicht alles wissen, um anzufangen.",
+  "30": "Wenn nichts hilft: Brot. Marmelade. Nochmal versuchen.",
+  "31": "Dein zukünftiges Ich wird dir für einen kleinen mutigen Schritt danken.",
+  "32": "Du darfst deine Meinung ändern. Sogar über Karotten.",
+  "33": "Ein guter Tag muss nicht spektakulär sein.",
+  "34": "Vielleicht wartet heute irgendwo ein schöner Zufall auf dich.",
+  "35": "Du bist mehr als deine To-do-Liste.",
+  "36": "Die Welt braucht nicht deine Perfektion. Nur ein bisschen mehr von dir.",
+  "37": "Atme ein. Atme aus. Nimm noch einen Löffel.",
+  "38": "Du darfst Dinge nur machen, weil sie dir Freude machen.",
+  "39": "Große Geschichten fangen oft ziemlich klein an.",
+  "40": "Wenn du heute nur eine Sache schaffst: Sei nett zu dir.",
+  "41": "Das hier ist deine offizielle Erlaubnis für einen kleinen Genussmoment.",
+  "42": "Du musst nicht produktiv sein, um einen guten Tag zu haben.",
+  "43": "Vielleicht ist dein nächster guter Gedanke nur einen Löffel entfernt.",
+  "44": "Heute bitte keine unnötige Selbstkritik. Die Karotte hat es verboten.",
+  "45": "Du bist gerade Teil einer sehr kleinen Karotten-Geschichte.",
+  "46": "Wenn du das lesen kannst, hast du schon etwas Neues ausprobiert.",
+  "47": "Mut sieht manchmal aus wie: einfach mal probieren.",
+  "48": "Es darf gleichzeitig chaotisch und schön sein.",
+  "49": "Dieser Moment gehört dir. Mach was Gutes draus.",
+  "50": "Danke, dass dieses Glas bei dir gelandet ist."
+};
 
 
 const params = new URLSearchParams(window.location.search);
-const glas = params.get("glas");
+let glas = params.get("glas");
 
 if (glas) {
-  const clean = glas.replace(/[^0-9A-Za-z_-]/g, "").slice(0, 12);
-  document.getElementById("jar").textContent = "Glas #" + clean;
+
+  glas = glas.replace(/\D/g, "");
+
+  if (glas.length === 1) {
+    glas = "0" + glas;
+  }
+
+  if (messages[glas]) {
+
+    document.getElementById("jar").textContent =
+      "Glas #" + glas;
+
+    document.getElementById("message").textContent =
+      messages[glas];
+
+  } else {
+
+    document.getElementById("jar").textContent =
+      "Dein Glas";
+
+    document.getElementById("message").textContent =
+      "Dieses Glas hat seine Geschichte verloren. 🥕";
+
+  }
+
+} else {
+
+  document.getElementById("jar").textContent =
+    "Dein Glas";
+
+  document.getElementById("message").textContent =
+    "Dieses Glas wartet noch auf seine Nummer. 🥕";
+
 }
 
-
-const randomIndex = Math.floor(Math.random() * messages.length);
-
-document.getElementById("message").textContent =
-  messages[randomIndex];
-
 </script>
+
 
 </body>
 </html>
